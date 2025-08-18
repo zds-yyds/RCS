@@ -7,7 +7,7 @@ def enhanced_db_test():
         'host': 'localhost',
         'user': 'root',
         'password': '123456',
-        'database': 'test_rcs',
+        'database': 'zds_test_rcs',
         'charset': 'utf8mb4',
         'cursorclass': pymysql.cursors.DictCursor  # 关键修复：指定返回字典格式
     }
