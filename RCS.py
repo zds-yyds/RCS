@@ -7,7 +7,7 @@ db_config = {
     'host': 'localhost',
     'user': 'root',
     'password': '123456',
-    'database': 'zds_test_rcs',
+    'database': 'test_rcs',
     'charset': 'utf8mb4'
 }
 
