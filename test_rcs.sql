@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Mysql57
+ Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50744
+ Source Server Version : 50739 (5.7.39-log)
  Source Host           : localhost:3306
  Source Schema         : test_rcs
 
  Target Server Type    : MySQL
- Target Server Version : 50744
+ Target Server Version : 50739 (5.7.39-log)
  File Encoding         : 65001
 
- Date: 31/08/2025 17:06:36
+ Date: 01/09/2025 14:36:41
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `ecm_data`  (
   `aircraft_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '飞机型号',
   `system_type` enum('RADAR','COMM') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '系统类型：雷达/通信',
   `mode_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '工作模式名称，例如：搜索、跟踪、测距',
-  `power` float NULL DEFAULT NULL COMMENT '发射功率，单位: dBm',
+  `power` float NULL DEFAULT NULL COMMENT '发射功率，单位: W',
   `frequency` float NOT NULL COMMENT '中心频率，单位: GHz',
   `bandwidth` float NULL DEFAULT NULL COMMENT '带宽，单位: MHz',
   `pulse_width` float NULL DEFAULT NULL COMMENT '脉宽，单位: μs（仅雷达有效）',
@@ -39,11 +39,19 @@ CREATE TABLE `ecm_data`  (
   `max_range` float NULL DEFAULT NULL COMMENT '最大可被识别范围，单位: km',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `unique_mode`(`aircraft_name`, `system_type`, `mode_name`, `beam_number`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ecm_data
 -- ----------------------------
+INSERT INTO `ecm_data` VALUES (41, 'F-16', 'RADAR', '搜索', 200000, 8, 1, 8.74, 194.95, 1, -30, 30, -60, 60, 200);
+INSERT INTO `ecm_data` VALUES (42, 'F-16', 'RADAR', '跟踪', 200000, 8, 1, 9.86, 845.47, 1, -30, 30, -60, 60, 200);
+INSERT INTO `ecm_data` VALUES (43, 'F-16', 'COMM', '应答', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
+INSERT INTO `ecm_data` VALUES (44, 'F-16', 'COMM', '静默', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
+INSERT INTO `ecm_data` VALUES (45, 'F-22', 'RADAR', '搜索', 200000, 8, 1, 5.13, 383.46, 1, -30, 30, -60, 60, 200);
+INSERT INTO `ecm_data` VALUES (46, 'F-22', 'RADAR', '跟踪', 200000, 8, 1, 7.46, 437.69, 1, -30, 30, -60, 60, 200);
+INSERT INTO `ecm_data` VALUES (47, 'F-22', 'COMM', '应答', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
+INSERT INTO `ecm_data` VALUES (48, 'F-22', 'COMM', '静默', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
 
 -- ----------------------------
 -- Table structure for esm_data
@@ -54,7 +62,7 @@ CREATE TABLE `esm_data`  (
   `aircraft_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '飞机型号',
   `system_type` enum('RADAR','COMM') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '系统类型：雷达/通信',
   `mode_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '工作模式名称，例如：搜索、跟踪、测距',
-  `power` float NULL DEFAULT NULL COMMENT '发射功率，单位: dBm',
+  `power` float NULL DEFAULT NULL COMMENT '发射功率，单位: W',
   `frequency` float NOT NULL COMMENT '中心频率，单位: GHz',
   `bandwidth` float NULL DEFAULT NULL COMMENT '带宽，单位: MHz',
   `pulse_width` float NULL DEFAULT NULL COMMENT '脉宽，单位: μs（仅雷达有效）',
@@ -67,11 +75,19 @@ CREATE TABLE `esm_data`  (
   `max_range` float NULL DEFAULT NULL COMMENT '最大可被识别范围，单位: km',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `unique_mode`(`aircraft_name`, `system_type`, `mode_name`, `beam_number`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of esm_data
 -- ----------------------------
+INSERT INTO `esm_data` VALUES (53, 'F-16', 'RADAR', '搜索', 200000, 8, 1, 3.94, 155.94, 1, -30, 30, -60, 60, 200);
+INSERT INTO `esm_data` VALUES (54, 'F-16', 'RADAR', '跟踪', 200000, 8, 1, 6.46, 210.41, 1, -30, 30, -60, 60, 200);
+INSERT INTO `esm_data` VALUES (55, 'F-16', 'COMM', '应答', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
+INSERT INTO `esm_data` VALUES (56, 'F-16', 'COMM', '静默', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
+INSERT INTO `esm_data` VALUES (57, 'F-22', 'RADAR', '搜索', 200000, 8, 1, 1.1, 596.23, 1, -30, 30, -60, 60, 200);
+INSERT INTO `esm_data` VALUES (58, 'F-22', 'RADAR', '跟踪', 200000, 8, 1, 4.46, 131.84, 1, -30, 30, -60, 60, 200);
+INSERT INTO `esm_data` VALUES (59, 'F-22', 'COMM', '应答', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
+INSERT INTO `esm_data` VALUES (60, 'F-22', 'COMM', '静默', 200000, 8, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 200);
 
 -- ----------------------------
 -- Table structure for ir_data
@@ -87,11 +103,179 @@ CREATE TABLE `ir_data`  (
   `ir_value` double NOT NULL COMMENT '红外特征值，单位: W/sr 或 dB（视模拟定义）',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `unique_measurement`(`aircraft_name`, `thrust_state`, `env_temperature`, `azimuth`, `elevation`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 337 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of ir_data
 -- ----------------------------
+INSERT INTO `ir_data` VALUES (1, 'F-16', 'MIL', -20, -90, -90, 0);
+INSERT INTO `ir_data` VALUES (2, 'F-16', 'MIL', -20, -90, 0, 0.114467488495679);
+INSERT INTO `ir_data` VALUES (3, 'F-16', 'MIL', -20, -90, 90, 0.21390793260928742);
+INSERT INTO `ir_data` VALUES (4, 'F-16', 'MIL', -20, 0, -90, 0.6367330690977457);
+INSERT INTO `ir_data` VALUES (5, 'F-16', 'MIL', -20, 0, 0, 0.8394752227691018);
+INSERT INTO `ir_data` VALUES (6, 'F-16', 'MIL', -20, 0, 90, 1.2232414704473114);
+INSERT INTO `ir_data` VALUES (7, 'F-16', 'MIL', -20, 90, -90, 1.3740864353616278);
+INSERT INTO `ir_data` VALUES (8, 'F-16', 'MIL', -20, 90, 0, 1.771866112794439);
+INSERT INTO `ir_data` VALUES (9, 'F-16', 'MIL', -20, 90, 90, 1.8184039124123343);
+INSERT INTO `ir_data` VALUES (10, 'F-16', 'MIL', -20, 180, -90, 2.150218381864398);
+INSERT INTO `ir_data` VALUES (11, 'F-16', 'MIL', -20, 180, 0, 2.308453141766689);
+INSERT INTO `ir_data` VALUES (12, 'F-16', 'MIL', -20, 180, 90, 2.3737128323920453);
+INSERT INTO `ir_data` VALUES (13, 'F-16', 'MIL', -10, -90, -90, 2.4664356553162463);
+INSERT INTO `ir_data` VALUES (14, 'F-16', 'MIL', -10, -90, 0, 2.8362457037740514);
+INSERT INTO `ir_data` VALUES (15, 'F-16', 'MIL', -10, -90, 90, 3.0448937758042076);
+INSERT INTO `ir_data` VALUES (16, 'F-16', 'MIL', -10, 0, -90, 3.3980530414183057);
+INSERT INTO `ir_data` VALUES (17, 'F-16', 'MIL', -10, 0, 0, 3.4916394836116353);
+INSERT INTO `ir_data` VALUES (18, 'F-16', 'MIL', -10, 0, 90, 3.5404388765908665);
+INSERT INTO `ir_data` VALUES (19, 'F-16', 'MIL', -10, 90, -90, 3.572985830990451);
+INSERT INTO `ir_data` VALUES (20, 'F-16', 'MIL', -10, 90, 0, 3.6738217692113784);
+INSERT INTO `ir_data` VALUES (21, 'F-16', 'MIL', -10, 90, 90, 3.724472764785253);
+INSERT INTO `ir_data` VALUES (22, 'F-16', 'MIL', -10, 180, -90, 3.9176543755511095);
+INSERT INTO `ir_data` VALUES (23, 'F-16', 'MIL', -10, 180, 0, 3.9475477428911367);
+INSERT INTO `ir_data` VALUES (24, 'F-16', 'MIL', -10, 180, 90, 4.335453644792801);
+INSERT INTO `ir_data` VALUES (25, 'F-16', 'MIL', 0, -90, -90, 4.750989547420091);
+INSERT INTO `ir_data` VALUES (26, 'F-16', 'MIL', 0, -90, 0, 5.1074153690062705);
+INSERT INTO `ir_data` VALUES (27, 'F-16', 'MIL', 0, -90, 90, 5.582120564149038);
+INSERT INTO `ir_data` VALUES (28, 'F-16', 'MIL', 0, 0, -90, 5.9744893161864105);
+INSERT INTO `ir_data` VALUES (29, 'F-16', 'MIL', 0, 0, 0, 6.209263793183851);
+INSERT INTO `ir_data` VALUES (30, 'F-16', 'MIL', 0, 0, 90, 6.707363789324791);
+INSERT INTO `ir_data` VALUES (31, 'F-16', 'MIL', 0, 90, -90, 7.200073685447668);
+INSERT INTO `ir_data` VALUES (32, 'F-16', 'MIL', 0, 90, 0, 7.4389357331108235);
+INSERT INTO `ir_data` VALUES (33, 'F-16', 'MIL', 0, 90, 90, 7.801630028847095);
+INSERT INTO `ir_data` VALUES (34, 'F-16', 'MIL', 0, 180, -90, 8.272665906592295);
+INSERT INTO `ir_data` VALUES (35, 'F-16', 'MIL', 0, 180, 0, 8.37895532720194);
+INSERT INTO `ir_data` VALUES (36, 'F-16', 'MIL', 0, 180, 90, 8.468848360086644);
+INSERT INTO `ir_data` VALUES (37, 'F-16', 'MIL', 10, -90, -90, 8.694851862070008);
+INSERT INTO `ir_data` VALUES (38, 'F-16', 'MIL', 10, -90, 0, 9.17749947835098);
+INSERT INTO `ir_data` VALUES (39, 'F-16', 'MIL', 10, -90, 90, 9.635635024697288);
+INSERT INTO `ir_data` VALUES (40, 'F-16', 'MIL', 10, 0, -90, 9.84994420749493);
+INSERT INTO `ir_data` VALUES (41, 'F-16', 'MIL', 10, 0, 0, 9.852743765417326);
+INSERT INTO `ir_data` VALUES (42, 'F-16', 'MIL', 10, 0, 90, 9.958234290316094);
+INSERT INTO `ir_data` VALUES (43, 'F-16', 'MIL', 10, 90, -90, 10.088015697640508);
+INSERT INTO `ir_data` VALUES (44, 'F-16', 'MIL', 10, 90, 0, 10.149518548250942);
+INSERT INTO `ir_data` VALUES (45, 'F-16', 'MIL', 10, 90, 90, 10.539383406377024);
+INSERT INTO `ir_data` VALUES (46, 'F-16', 'MIL', 10, 180, -90, 10.580768811908834);
+INSERT INTO `ir_data` VALUES (47, 'F-16', 'MIL', 10, 180, 0, 10.980897832729832);
+INSERT INTO `ir_data` VALUES (48, 'F-16', 'MIL', 10, 180, 90, 11.38639066449825);
+INSERT INTO `ir_data` VALUES (49, 'F-16', 'MIL', 20, -90, -90, 11.873038472232043);
+INSERT INTO `ir_data` VALUES (50, 'F-16', 'MIL', 20, -90, 0, 12.25602579550562);
+INSERT INTO `ir_data` VALUES (51, 'F-16', 'MIL', 20, -90, 90, 12.657772256968261);
+INSERT INTO `ir_data` VALUES (52, 'F-16', 'MIL', 20, 0, -90, 12.995362402019873);
+INSERT INTO `ir_data` VALUES (53, 'F-16', 'MIL', 20, 0, 0, 13.24069685585611);
+INSERT INTO `ir_data` VALUES (54, 'F-16', 'MIL', 20, 0, 90, 13.343958702767912);
+INSERT INTO `ir_data` VALUES (55, 'F-16', 'MIL', 20, 90, -90, 13.48599454173589);
+INSERT INTO `ir_data` VALUES (56, 'F-16', 'MIL', 20, 90, 0, 13.743057699757651);
+INSERT INTO `ir_data` VALUES (57, 'F-16', 'MIL', 20, 90, 90, 14.173367086291277);
+INSERT INTO `ir_data` VALUES (58, 'F-16', 'MIL', 20, 180, -90, 14.187166134591282);
+INSERT INTO `ir_data` VALUES (59, 'F-16', 'MIL', 20, 180, 0, 14.66879049286785);
+INSERT INTO `ir_data` VALUES (60, 'F-16', 'MIL', 20, 180, 90, 15.158279693503165);
+INSERT INTO `ir_data` VALUES (61, 'F-16', 'MIL', 30, -90, -90, 15.32945235699571);
+INSERT INTO `ir_data` VALUES (62, 'F-16', 'MIL', 30, -90, 0, 15.595158843358252);
+INSERT INTO `ir_data` VALUES (63, 'F-16', 'MIL', 30, -90, 90, 15.671691320304186);
+INSERT INTO `ir_data` VALUES (64, 'F-16', 'MIL', 30, 0, -90, 16.05453065433665);
+INSERT INTO `ir_data` VALUES (65, 'F-16', 'MIL', 30, 0, 0, 16.44286058236261);
+INSERT INTO `ir_data` VALUES (66, 'F-16', 'MIL', 30, 0, 90, 16.717786981872575);
+INSERT INTO `ir_data` VALUES (67, 'F-16', 'MIL', 30, 90, -90, 17.093079523161673);
+INSERT INTO `ir_data` VALUES (68, 'F-16', 'MIL', 30, 90, 0, 17.32099883352821);
+INSERT INTO `ir_data` VALUES (69, 'F-16', 'MIL', 30, 90, 90, 17.662349333596122);
+INSERT INTO `ir_data` VALUES (70, 'F-16', 'MIL', 30, 180, -90, 17.870295333191788);
+INSERT INTO `ir_data` VALUES (71, 'F-16', 'MIL', 30, 180, 0, 18.348793502433825);
+INSERT INTO `ir_data` VALUES (72, 'F-16', 'MIL', 30, 180, 90, 18.59276271216101);
+INSERT INTO `ir_data` VALUES (73, 'F-16', 'MIL', 40, -90, -90, 18.88273738016604);
+INSERT INTO `ir_data` VALUES (74, 'F-16', 'MIL', 40, -90, 0, 19.007743496823483);
+INSERT INTO `ir_data` VALUES (75, 'F-16', 'MIL', 40, -90, 90, 19.21162871030731);
+INSERT INTO `ir_data` VALUES (76, 'F-16', 'MIL', 40, 0, -90, 19.590902702587066);
+INSERT INTO `ir_data` VALUES (77, 'F-16', 'MIL', 40, 0, 0, 19.631168152481198);
+INSERT INTO `ir_data` VALUES (78, 'F-16', 'MIL', 40, 0, 90, 19.883030075084662);
+INSERT INTO `ir_data` VALUES (79, 'F-16', 'MIL', 40, 90, -90, 20.20188244925459);
+INSERT INTO `ir_data` VALUES (80, 'F-16', 'MIL', 40, 90, 0, 20.678321809889166);
+INSERT INTO `ir_data` VALUES (81, 'F-16', 'MIL', 40, 90, 90, 20.90075491287202);
+INSERT INTO `ir_data` VALUES (82, 'F-16', 'MIL', 40, 180, -90, 21.196879861367552);
+INSERT INTO `ir_data` VALUES (83, 'F-16', 'MIL', 40, 180, 0, 21.244380200807047);
+INSERT INTO `ir_data` VALUES (84, 'F-16', 'MIL', 40, 180, 90, 21.494601167226186);
+INSERT INTO `ir_data` VALUES (85, 'F-16', 'AB', -20, -90, -90, 21.835700408432093);
+INSERT INTO `ir_data` VALUES (86, 'F-16', 'AB', -20, -90, 0, 22.159767981990754);
+INSERT INTO `ir_data` VALUES (87, 'F-16', 'AB', -20, -90, 90, 22.539870493402717);
+INSERT INTO `ir_data` VALUES (88, 'F-16', 'AB', -20, 0, -90, 22.703556993298577);
+INSERT INTO `ir_data` VALUES (89, 'F-16', 'AB', -20, 0, 0, 22.93365874971691);
+INSERT INTO `ir_data` VALUES (90, 'F-16', 'AB', -20, 0, 90, 23.365656101289048);
+INSERT INTO `ir_data` VALUES (91, 'F-16', 'AB', -20, 90, -90, 23.607880108702822);
+INSERT INTO `ir_data` VALUES (92, 'F-16', 'AB', -20, 90, 0, 23.854792870447312);
+INSERT INTO `ir_data` VALUES (93, 'F-16', 'AB', -20, 90, 90, 23.883966886427668);
+INSERT INTO `ir_data` VALUES (94, 'F-16', 'AB', -20, 180, -90, 24.0650133699262);
+INSERT INTO `ir_data` VALUES (95, 'F-16', 'AB', -20, 180, 0, 24.424125641564164);
+INSERT INTO `ir_data` VALUES (96, 'F-16', 'AB', -20, 180, 90, 24.791967226390614);
+INSERT INTO `ir_data` VALUES (97, 'F-16', 'AB', -10, -90, -90, 25.05405699857574);
+INSERT INTO `ir_data` VALUES (98, 'F-16', 'AB', -10, -90, 0, 25.202884067072095);
+INSERT INTO `ir_data` VALUES (99, 'F-16', 'AB', -10, -90, 90, 25.481585277302518);
+INSERT INTO `ir_data` VALUES (100, 'F-16', 'AB', -10, 0, -90, 25.92857749106892);
+INSERT INTO `ir_data` VALUES (101, 'F-16', 'AB', -10, 0, 0, 26.373285696040572);
+INSERT INTO `ir_data` VALUES (102, 'F-16', 'AB', -10, 0, 90, 26.71265071343256);
+INSERT INTO `ir_data` VALUES (103, 'F-16', 'AB', -10, 90, -90, 27.137739577698632);
+INSERT INTO `ir_data` VALUES (104, 'F-16', 'AB', -10, 90, 0, 27.48388446590525);
+INSERT INTO `ir_data` VALUES (105, 'F-16', 'AB', -10, 90, 90, 27.866703633959126);
+INSERT INTO `ir_data` VALUES (106, 'F-16', 'AB', -10, 180, -90, 28.30521319798984);
+INSERT INTO `ir_data` VALUES (107, 'F-16', 'AB', -10, 180, 0, 28.453845832860612);
+INSERT INTO `ir_data` VALUES (108, 'F-16', 'AB', -10, 180, 90, 28.52106251425983);
+INSERT INTO `ir_data` VALUES (109, 'F-16', 'AB', 0, -90, -90, 28.728340350365837);
+INSERT INTO `ir_data` VALUES (110, 'F-16', 'AB', 0, -90, 0, 29.052814634917908);
+INSERT INTO `ir_data` VALUES (111, 'F-16', 'AB', 0, -90, 90, 29.368811447205346);
+INSERT INTO `ir_data` VALUES (112, 'F-16', 'AB', 0, 0, -90, 29.86785980013057);
+INSERT INTO `ir_data` VALUES (113, 'F-16', 'AB', 0, 0, 0, 29.933057846191687);
+INSERT INTO `ir_data` VALUES (114, 'F-16', 'AB', 0, 0, 90, 30.38402674770924);
+INSERT INTO `ir_data` VALUES (115, 'F-16', 'AB', 0, 90, -90, 30.507098054108134);
+INSERT INTO `ir_data` VALUES (116, 'F-16', 'AB', 0, 90, 0, 30.724343655389408);
+INSERT INTO `ir_data` VALUES (117, 'F-16', 'AB', 0, 90, 90, 31.11106719186276);
+INSERT INTO `ir_data` VALUES (118, 'F-16', 'AB', 0, 180, -90, 31.482616584613215);
+INSERT INTO `ir_data` VALUES (119, 'F-16', 'AB', 0, 180, 0, 31.804067386882615);
+INSERT INTO `ir_data` VALUES (120, 'F-16', 'AB', 0, 180, 90, 31.9960878874959);
+INSERT INTO `ir_data` VALUES (121, 'F-16', 'AB', 10, -90, -90, 32.115712464061886);
+INSERT INTO `ir_data` VALUES (122, 'F-16', 'AB', 10, -90, 0, 32.38406397223831);
+INSERT INTO `ir_data` VALUES (123, 'F-16', 'AB', 10, -90, 90, 32.57752672271699);
+INSERT INTO `ir_data` VALUES (124, 'F-16', 'AB', 10, 0, -90, 32.70082440798857);
+INSERT INTO `ir_data` VALUES (125, 'F-16', 'AB', 10, 0, 0, 32.85136867045343);
+INSERT INTO `ir_data` VALUES (126, 'F-16', 'AB', 10, 0, 90, 33.12821554392338);
+INSERT INTO `ir_data` VALUES (127, 'F-16', 'AB', 10, 90, -90, 33.39674158974243);
+INSERT INTO `ir_data` VALUES (128, 'F-16', 'AB', 10, 90, 0, 33.44806564666568);
+INSERT INTO `ir_data` VALUES (129, 'F-16', 'AB', 10, 90, 90, 33.864310680136);
+INSERT INTO `ir_data` VALUES (130, 'F-16', 'AB', 10, 180, -90, 34.081426316154364);
+INSERT INTO `ir_data` VALUES (131, 'F-16', 'AB', 10, 180, 0, 34.340285636251096);
+INSERT INTO `ir_data` VALUES (132, 'F-16', 'AB', 10, 180, 90, 34.66640438330278);
+INSERT INTO `ir_data` VALUES (133, 'F-16', 'AB', 20, -90, -90, 35.08474245089883);
+INSERT INTO `ir_data` VALUES (134, 'F-16', 'AB', 20, -90, 0, 35.350496534515635);
+INSERT INTO `ir_data` VALUES (135, 'F-16', 'AB', 20, -90, 90, 35.59765477202749);
+INSERT INTO `ir_data` VALUES (136, 'F-16', 'AB', 20, 0, -90, 35.80567568862725);
+INSERT INTO `ir_data` VALUES (137, 'F-16', 'AB', 20, 0, 0, 36.26431485111016);
+INSERT INTO `ir_data` VALUES (138, 'F-16', 'AB', 20, 0, 90, 36.572390934799195);
+INSERT INTO `ir_data` VALUES (139, 'F-16', 'AB', 20, 90, -90, 36.72062315451138);
+INSERT INTO `ir_data` VALUES (140, 'F-16', 'AB', 20, 90, 0, 37.12513219855717);
+INSERT INTO `ir_data` VALUES (141, 'F-16', 'AB', 20, 90, 90, 37.55549571397334);
+INSERT INTO `ir_data` VALUES (142, 'F-16', 'AB', 20, 180, -90, 37.62688450491832);
+INSERT INTO `ir_data` VALUES (143, 'F-16', 'AB', 20, 180, 0, 38.07403286754749);
+INSERT INTO `ir_data` VALUES (144, 'F-16', 'AB', 20, 180, 90, 38.31283509949185);
+INSERT INTO `ir_data` VALUES (145, 'F-16', 'AB', 30, -90, -90, 38.5024740643443);
+INSERT INTO `ir_data` VALUES (146, 'F-16', 'AB', 30, -90, 0, 38.79823764622584);
+INSERT INTO `ir_data` VALUES (147, 'F-16', 'AB', 30, -90, 90, 39.21729399220009);
+INSERT INTO `ir_data` VALUES (148, 'F-16', 'AB', 30, 0, -90, 39.32186895707368);
+INSERT INTO `ir_data` VALUES (149, 'F-16', 'AB', 30, 0, 0, 39.72079410737169);
+INSERT INTO `ir_data` VALUES (150, 'F-16', 'AB', 30, 0, 90, 39.772091841885576);
+INSERT INTO `ir_data` VALUES (151, 'F-16', 'AB', 30, 90, -90, 40.07779680988386);
+INSERT INTO `ir_data` VALUES (152, 'F-16', 'AB', 30, 90, 0, 40.56719270965961);
+INSERT INTO `ir_data` VALUES (153, 'F-16', 'AB', 30, 90, 90, 40.69374559714017);
+INSERT INTO `ir_data` VALUES (154, 'F-16', 'AB', 30, 180, -90, 41.089961741295404);
+INSERT INTO `ir_data` VALUES (155, 'F-16', 'AB', 30, 180, 0, 41.39214527235015);
+INSERT INTO `ir_data` VALUES (156, 'F-16', 'AB', 30, 180, 90, 41.48807682918026);
+INSERT INTO `ir_data` VALUES (157, 'F-16', 'AB', 40, -90, -90, 41.94741140523846);
+INSERT INTO `ir_data` VALUES (158, 'F-16', 'AB', 40, -90, 0, 42.155286983105896);
+INSERT INTO `ir_data` VALUES (159, 'F-16', 'AB', 40, -90, 90, 42.47606057970131);
+INSERT INTO `ir_data` VALUES (160, 'F-16', 'AB', 40, 0, -90, 42.86581364093168);
+INSERT INTO `ir_data` VALUES (161, 'F-16', 'AB', 40, 0, 0, 43.14992228766602);
+INSERT INTO `ir_data` VALUES (162, 'F-16', 'AB', 40, 0, 90, 43.64414507586292);
+INSERT INTO `ir_data` VALUES (163, 'F-16', 'AB', 40, 90, -90, 43.72032746186098);
+INSERT INTO `ir_data` VALUES (164, 'F-16', 'AB', 40, 90, 0, 43.91584962845101);
+INSERT INTO `ir_data` VALUES (165, 'F-16', 'AB', 40, 90, 90, 44.33282899964725);
+INSERT INTO `ir_data` VALUES (166, 'F-16', 'AB', 40, 180, -90, 44.448006494897605);
+INSERT INTO `ir_data` VALUES (167, 'F-16', 'AB', 40, 180, 0, 44.61990262219437);
+INSERT INTO `ir_data` VALUES (168, 'F-16', 'AB', 40, 180, 90, 44.82842494570659);
 
 -- ----------------------------
 -- Table structure for rcs_data
@@ -107,7 +291,7 @@ CREATE TABLE `rcs_data`  (
   `rcs_value` double NOT NULL COMMENT 'RCS值，单位: dBsm',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `unique_measurement`(`aircraft_name`, `frequency`, `polarization`, `azimuth`, `elevation`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1002180 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1002180 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rcs_data

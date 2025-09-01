@@ -16,7 +16,7 @@ aircraft_name = 'F-16'  # 飞机名称
 initial_rcs = 0.5  # 初始 RCS 值 (dBsm)，从 0.5 开始
 frequencies = list(range(1, 13))  # [1, 2, 3, ..., 12] 1.0-12.0 GHz，步长 1 GHz（共12个频率点）
 polarizations = ['HH', 'VV']
-azimuths = range(-180, 181, 90)  # -180到180度，步长90
+azimuths = range(-90, 181, 90)  # -90到180度，步长90
 elevations = range(-90, 91, 90)  # -90到90度，步长90
 
 
